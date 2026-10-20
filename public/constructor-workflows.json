@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "workflows": [
+    {"id":"listar_tareas","name":"Consultar tareas","description":"Consulta tareas por estado, ordenadas por fecha y creación.","endpoint":"/api/tareas","method":"GET","input":{"estado":"todas"}},
+    {"id":"crear_tarea","name":"Crear tarea","description":"Crea una tarea con los campos elegidos. Los valores vacíos se rechazan sin escribir.","endpoint":"/api/tareas","method":"POST","input":{"title":"","description":"","priority":"Media","due_date":""}},
+    {"id":"editar_tarea","name":"Editar tarea","description":"Actualiza los detalles de una tarea elegida sin cambiar su estado.","endpoint":"/api/tareas/editar","method":"POST","input":{"id":"","title":"","description":"","priority":"Media","due_date":""}},
+    {"id":"cambiar_estado","name":"Cambiar estado","description":"Establece explícitamente el estado de una tarea elegida.","endpoint":"/api/tareas/estado","method":"POST","input":{"id":"","status":"completada"}},
+    {"id":"eliminar_tarea","name":"Eliminar tarea","description":"Requiere un identificador válido y confirmación explícita. Estos valores no eliminan registros.","endpoint":"/api/tareas/eliminar","method":"POST","input":{"id":"","confirmed":false}}
+  ]
+}

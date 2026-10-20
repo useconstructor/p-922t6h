@@ -1,0 +1,13 @@
+{
+  "tone": "professional",
+  "fontBody": "Public Sans local",
+  "logoText": "Tareas AWS Frontend",
+  "textColor": "#242920",
+  "accentColor": "#52612D",
+  "fontHeading": "Public Sans local",
+  "borderRadius": "0.5rem",
+  "logoImageUrl": null,
+  "primaryColor": "#F7F8F2",
+  "secondaryColor": "#FFFFFF",
+  "backgroundColor": "#F7F8F2"
+}

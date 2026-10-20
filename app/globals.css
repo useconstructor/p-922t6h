@@ -1,33 +1,44 @@
 @import "tailwindcss";
 
+@theme inline {
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --color-background: oklch(1 0 0);
-  --color-foreground: oklch(0.145 0 0);
-  --color-card: oklch(1 0 0);
-  --color-card-foreground: oklch(0.145 0 0);
-  --color-primary: oklch(0.205 0 0);
-  --color-primary-foreground: oklch(0.985 0 0);
-  --color-secondary: oklch(0.97 0 0);
-  --color-secondary-foreground: oklch(0.205 0 0);
-  --color-muted: oklch(0.97 0 0);
-  --color-muted-foreground: oklch(0.556 0 0);
-  --color-accent: oklch(0.97 0 0);
-  --color-accent-foreground: oklch(0.205 0 0);
-  --color-destructive: oklch(0.577 0.245 27.325);
-  --color-border: oklch(0.922 0 0);
-  --color-input: oklch(0.922 0 0);
-  --color-ring: oklch(0.708 0 0);
+  --color-background: #F3F5F0;
+  --color-foreground: #252B26;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #252B26;
+  --color-primary: #6844B5;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #F3F5F0;
+  --color-secondary-foreground: #252B26;
+  --color-muted: #F3F5F0;
+  --color-muted-foreground: #5B645A;
+  --color-accent: #F3F5F0;
+  --color-accent-foreground: #252B26;
+  --color-completed: #287247;
+  --color-destructive: #252B26;
+  --color-destructive-foreground: #FFFFFF;
+  --color-border: #CDD3C9;
+  --color-input: #CDD3C9;
+  --color-ring: #6844B5;
   --radius: 0.5rem;
 }
-
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-  body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-  }
+  * { border-color: var(--color-border); }
+  body { background: var(--color-background); color: var(--color-foreground); font-family: var(--font-plex-sans), sans-serif; }
+  button, input, select, textarea { font: inherit; }
+  button:not(:disabled), select { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--color-ring); outline-offset: 4px; }
+  ::selection { background: var(--color-secondary); color: var(--color-foreground); }
+}
+@keyframes panel-in { from { transform: translateX(24px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+@keyframes dialog-in { from { opacity: 0; transform: translate(-50%, -48%); } to { opacity: 1; transform: translate(-50%, -50%); } }
+@keyframes overlay-in { from { opacity: 0; } to { opacity: 1; } }
+@utility animate-panel { animation: panel-in 180ms ease-out; }
+@utility animate-dialog { animation: dialog-in 180ms ease-out; }
+@utility animate-overlay { animation: overlay-in 150ms ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0s !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; transition-duration: 0s !important; transition-delay: 0s !important; scroll-behavior: auto !important; }
 }
